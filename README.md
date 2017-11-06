@@ -1,6 +1,7 @@
 # lwin
 
-TODO: Write a description here
+*Lwin* should correctly parse the lotto & joker draw report, and
+update a simple database accesible from any kind of application.
 
 ## Installation
 
