@@ -28,4 +28,4 @@ $ crystal build src/lwin.cr
 
 ## Contributors
 
-- [[atonevski]](https://github.com/[atonevski]) Andreja Tonevski - creator, maintainer
+- [[atonevski]](https://github.com/atonevski) Andreja Tonevski - creator, maintainer
