@@ -1,0 +1,27 @@
+────── ──── ────────── уплата ─────────── ──────── добивки ──────────
+година кола    мин.      сред.     макс.  x7 x6p/<%= "†".colorize(:white) %>   x6(<%= "‡".colorize(:white) %>)   x5  x4
+────── ──── ───────── ───────── ───────── ── ───── ──────── ─── ─────
+<%- @a.each do |r| -%>
+  <%-= sprintf " %4d  %4d", r["year"].as(Float64).to_i64,
+               r["draws"]
+  -%>
+  <%-= sprintf " %9s %9s %9s", Gs.i_to_sep(r["min_lsales"].as(Float64).to_i64),
+               Gs.i_to_sep(r["avg_lsales"].as(Float64).to_i64),
+               Gs.i_to_sep(r["max_lsales"].as(Float64).to_i64)
+  -%>
+  <%-= sprintf " %2d", r["x7"].as(Float64).to_i -%>
+  <%-= sprintf " %2d/%-2d", r["x6p"].as(Float64).to_i,
+               @h6p[r["year"].as(Float64).to_i32]             
+  -%>
+  <%-= sprintf " %2d(%3d%%)", r["x6"].as(Float64).to_i,
+               @h6[r["year"].as(Float64).to_i32] * 100 / r["draws"].as(Float64).to_i
+  -%>
+  <%-= sprintf " %3d %5s",
+               r["x5"].as(Float64).to_i64,
+               Gs.i_to_sep(r["x4"].as(Float64).to_i64)
+  %>
+<%- end -%>
+────── ──── ───────── ───────── ───────── ── ───── ──────── ─── ─────
+
+<%= "†".colorize(:white) %> = во колку кола се појавува 6 + д
+<%= "‡".colorize(:white) %> = % во кола се појавува добивка со 6 погодоци

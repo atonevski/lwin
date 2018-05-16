@@ -1,0 +1,21 @@
+──── ────────── ────────────── ── ── ── ── ── ── ── ── ────────────── ──────
+коло    дата      лото уплата <%-= COLORS[0..6].map_with_index {|c, i| sprintf(" %2d", i+1).colorize(c)}.join %><%= " +д".colorize(COLORS[-1]) %>  џокер уплата   џокер
+──── ────────── ────────────── ── ── ── ── ── ── ── ── ────────────── ──────
+<% @a.each do |r| -%>
+  <%-= sprintf "%4d %s %14s", r["draw"], 
+          r["date"].as(Time).to_s(Gs::YMD_FMT),
+          Gs.i_to_sep(r["lsales"].as(Int64).to_i)
+  -%>
+  <%-= sprintf(" %2d", r["lwc1"]).colorize(COLORS[0]) -%>
+  <%-= sprintf(" %2d", r["lwc2"]).colorize(COLORS[1]) -%>
+  <%-= sprintf(" %2d", r["lwc3"]).colorize(COLORS[2]) -%>
+  <%-= sprintf(" %2d", r["lwc4"]).colorize(COLORS[3]) -%>
+  <%-= sprintf(" %2d", r["lwc5"]).colorize(COLORS[4]) -%>
+  <%-= sprintf(" %2d", r["lwc6"]).colorize(COLORS[5]) -%>
+  <%-= sprintf(" %2d", r["lwc7"]).colorize(COLORS[6]) -%>
+  <%-= sprintf(" %2d", r["lwcp"]).colorize(COLORS[7]) -%>
+  <%-= sprintf " %14s", Gs.i_to_sep(r["jsales"].as(Int64).to_i) -%>
+  <%-= sprintf(" %6s", r["jwc"]).colorize(COLORS[7]) %>
+<%- end -%>
+──── ────────── ────────────── ── ── ── ── ── ── ── ── ────────────── ──────
+<%= sprintf "%4d", @a.size -%>

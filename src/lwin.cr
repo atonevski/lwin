@@ -4,6 +4,7 @@ require "http/client"
 require "json"
 require "xml"
 
+
 module Lwin
   # TODO  
   #   - update google sheet flat database
@@ -114,6 +115,80 @@ module Lwin
       end
     end
 
+    def to_h
+      {
+        "draw" => @draw,
+        "date" => @date.as(Time).to_s(Gs::MK_FMT), # string either mk or ymd
+
+        "lsales"  => @lsales,
+
+        "lx7"     => @lwinners[:x7],
+        "lx6p"    => @lwinners[:x6p],
+        "lx6"     => @lwinners[:x6],
+        "lx5"     => @lwinners[:x5],
+        "lx4"     => @lwinners[:x4],
+
+        "lmx7"    => @lwamounts[:x7],
+        "lmx6p"   => @lwamounts[:x6p],
+        "lmx6"    => @lwamounts[:x6],
+        "lmx5"    => @lwamounts[:x5],
+        "lmx4"    => @lwamounts[:x4],
+
+        "lfx7"    => @lwfunds[:x7],
+        "lfx6p"   => @lwfunds[:x6p],
+        "lfx6"    => @lwfunds[:x6],
+        "lfx5"    => @lwfunds[:x5],
+        "lfx4"    => @lwfunds[:x4],
+        
+        "ljx7"    => @lwjpots[:x7],
+        "ljx6p"   => @lwjpots[:x6p],
+        "ljx6"    => @lwjpots[:x6],
+        "ljx5"    => @lwjpots[:x5],
+        "ljx4"    => @lwjpots[:x4],
+
+        "lwc1"    => @lcolumn[0],
+        "lwc2"    => @lcolumn[1],
+        "lwc3"    => @lcolumn[2],
+        "lwc4"    => @lcolumn[3],
+        "lwc5"    => @lcolumn[4],
+        "lwc6"    => @lcolumn[5],
+        "lwc7"    => @lcolumn[6],
+        "lwcp"    => @lcolumn[7],
+
+        "jsales"  => @jsales,
+
+        "jx6"     => @jwinners[:x6],
+        "jx5"     => @jwinners[:x5],
+        "jx4"     => @jwinners[:x4],
+        "jx3"     => @jwinners[:x3],
+        "jx2"     => @jwinners[:x2],
+        "jx1"     => @jwinners[:x1],
+
+        "jmx6"    => @jwamounts[:x6],
+        "jmx5"    => @jwamounts[:x5],
+        "jmx4"    => @jwamounts[:x4],
+        "jmx3"    => @jwamounts[:x3],
+        "jmx2"    => @jwamounts[:x2],
+        "jmx1"    => @jwamounts[:x1],
+
+        "jfx6"    => @jwfunds[:x6],
+        "jfx5"    => @jwfunds[:x5],
+        "jfx4"    => @jwfunds[:x4],
+        "jfx3"    => @jwfunds[:x3],
+        "jfx2"    => @jwfunds[:x2],
+        "jfx1"    => @jwfunds[:x1],
+
+        "jjx6"    => @jwjpots[:x6],
+        "jjx5"    => @jwjpots[:x5],
+        "jjx4"    => @jwjpots[:x4],
+        "jjx3"    => @jwjpots[:x3],
+        "jjx2"    => @jwjpots[:x2],
+        "jjx1"    => @jwjpots[:x1],
+
+        "jwc"     => @jcolumn
+      }
+    end
+
     def self.mk_to_i(s)
      s = s.match(/\s*([.\d]+)/).try &.[1]
      unless s.nil?
@@ -138,8 +213,3 @@ module Lwin
     end
   end
 end
-
-win = Lwin::WinParser.new 2017, 87
-
-puts "status: #{ win.status }"
-# puts win.html

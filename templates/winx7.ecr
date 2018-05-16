@@ -1,0 +1,23 @@
+──── ────────── ── ────────────── ────────────── ──────────────
+коло    дата    x7        добивка           фонд         џекпот
+──── ────────── ── ────────────── ────────────── ──────────────
+<% @a.each do |r| -%>
+  <%- if r["lx7"].as(Int64).to_f*r["lmx7"].as(Float64) >
+        r["lfx7"].as(Float64) + r["ljx7"].as(Float64) + 1000.0 -%>
+    <%-= (sprintf "%4d %s %2d %14s %14s %14s", r["draw"], 
+            r["date"].as(Time).to_s(Gs::YMD_FMT), r["lx7"],
+            Gs.f_to_sep(r["lmx7"]), Gs.f_to_sep(r["lfx7"]),
+            Gs.f_to_sep(r["ljx7"])
+         ).colorize(:red) 
+    %>
+  <%- else -%>
+    <%-= (sprintf "%4d %s %2d %14s %14s %14s", r["draw"], 
+            r["date"].as(Time).to_s(Gs::YMD_FMT), r["lx7"],
+            Gs.f_to_sep(r["lmx7"]), Gs.f_to_sep(r["lfx7"]),
+            Gs.f_to_sep(r["ljx7"])
+         )
+    %>
+  <%- end -%>
+<%- end -%>
+──── ────────── ── ────────────── ────────────── ──────────────
+<%= sprintf "%4d", @a.size -%>
