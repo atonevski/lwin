@@ -9,7 +9,7 @@ module LwinCLI
   }
 
   p = OptionParser.parse! do |parser|
-    parser.banner = "Usage: lwin [x7|x6p|joker|last|freq|stats]..."
+    parser.banner = "Usage: lwin [x7|x6p|joker|last|freq|stats|update]..."
     
     # short list last draws with sales and winning columns
     parser.on("-l LAST", "--last=LAST", "LAST: number of draws (10)") do |l|

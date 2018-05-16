@@ -3,17 +3,20 @@
 *Lwin* should correctly parse the lotto & joker draw report, and
 update a simple database accesible from any kind of application.
 
+Other applications can easily sql-like query the database kept in a google sheet. 
+
 ## Installation
 
-TODO: Write installation instructions here
+```
+$ crystal build src/lwin.cr
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+![usage](/screenshots/usage.png?raw=true)
 
-## Development
+![last](/screenshots/usage.png?raw=true)
 
-TODO: Write development instructions here
 
 ## Contributing
 
