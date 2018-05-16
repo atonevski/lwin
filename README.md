@@ -15,7 +15,7 @@ $ crystal build src/lwin.cr
 
 ![usage](/screenshots/usage.png?raw=true)
 
-![last](/screenshots/usage.png?raw=true)
+![last](/screenshots/last.png?raw=true)
 
 
 ## Contributing
