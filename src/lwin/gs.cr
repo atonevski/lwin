@@ -64,9 +64,9 @@ module Gs
         a = [ ] of Hash(String, Time|Float64|Int64|String)
         cols = r["table"]["cols"]
         rows = r["table"]["rows"]
-        rows.each do |r|
+        rows.as_a.each do |r|
           h = { } of String => Time|Float64|Int64|String
-          cols.each_with_index do |c, i|
+          cols.as_a.each_with_index do |c, i|
             label = c["label"].to_s
             case c["type"]
             when "number"
